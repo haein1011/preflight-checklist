@@ -71,68 +71,79 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-900 text-white flex flex-col items-center py-12 px-4">
-      <div className="bg-white/10 backdrop-blur-md shadow-2xl rounded-3xl w-full max-w-md p-8 border border-white/20">
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        <h1 className="text-3xl font-bold mb-6 text-center">🗹 Ploy's Checklist</h1>
+  <main className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-900 text-white flex flex-col items-center py-10 px-4 pb-[calc(env(safe-area-inset-bottom)+24px)]">
+    <div className="bg-white/10 backdrop-blur-md shadow-2xl rounded-3xl w-full max-w-md md:max-w-2xl p-6 md:p-8 border border-white/20 mx-auto">
+      {/* eslint-disable-next-line react/no-unescaped-entities */}
+      <h1 className="text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-center truncate"> 🗹 Ploy's Checklist
+      </h1>
 
-        <div className="flex gap-2 mb-6">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type here na ka 🛫🛫🛫"
-            className="flex-1 px-4 py-3 rounded-xl bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <button
-            onClick={addTask}
-            className="bg-blue-500 hover:bg-blue-600 px-5 py-3 rounded-xl font-semibold shadow-lg transition active:scale-95"
-          >
-            Add😸
-          </button>
-        </div>
-
-        {lastError && (
-          <div className="mb-4 text-sm text-red-300 bg-red-900/30 p-2 rounded">
-            {lastError}
-          </div>
-        )}
-
-        {tasks.length === 0 ? (
-          <p className="text-center text-gray-400 italic">Nothing here yet... 😌</p>
-        ) : (
-          <ul className="space-y-3">
-            {tasks.map((task) => (
-              <li
-                key={task.id}
-                className="flex justify-between items-center bg-white/5 rounded-2xl p-4 border border-white/10 hover:bg-white/10 transition"
-              >
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={task.done}
-                    onChange={() => toggleTask(task)}
-                    className="w-5 h-5 accent-green-400 cursor-pointer"
-                  />
-                  <span className={task.done ? "line-through text-gray-400" : "text-white"}>
-                    {task.text}
-                  </span>
-                </label>
-                <button
-  onClick={() => removeTask(task.id)}
-  className="border border-red-200 text-red-200 hover:bg-red-300 hover:text-white px-3 py-1 rounded-md transition"
->
-  Delete 😿
-</button>
-              </li>
-            ))}
-          </ul>
-        )}
-        <footer className="mt-8 text-center text-sm text-gray-400">
-  <div className="mt-2 text-xs text-gray-500">
-    Made by <span className="font-semibold text-gray-300">แฮอิน จ้า นะ ค่ะ</span> 😺
-  </div>
-</footer>
+      {/* 입력 + 추가 버튼: 모바일은 세로, md부터 가로 */}
+      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type here na ka 🛫🛫🛫"
+          className="flex-1 px-4 h-11 rounded-xl bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <button
+          onClick={addTask}
+          className="h-11 sm:w-28 rounded-xl bg-blue-500 hover:bg-blue-600 font-semibold shadow-lg transition active:scale-95"
+        >
+          Add😸
+        </button>
       </div>
-    </main>
-  );
+
+      {lastError && (
+        <div className="mb-4 text-sm text-red-300 bg-red-900/30 p-2 rounded">
+          {lastError}
+        </div>
+      )}
+
+      {tasks.length === 0 ? (
+        <p className="text-center text-gray-400 italic">Nothing here yet... 😌</p>
+      ) : (
+        <ul className="space-y-3">
+          {tasks.map((task) => (
+            <li
+              key={task.id}
+              className="flex items-start justify-between gap-3 bg-white/5 rounded-2xl p-4 border border-white/10"
+            >
+              {/* 왼쪽: 체크박스 + 텍스트 */}
+              <label className="flex items-start gap-3 flex-1 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={task.done}
+                  onChange={() => toggleTask(task)}
+                  className="w-5 h-5 accent-green-400 mt-0.5"
+                />
+                <span
+                  className={`text-base md:text-lg break-words leading-snug ${
+                    task.done ? "line-through text-gray-400" : "text-white"
+                  }`}
+                >
+                  {task.text}
+                </span>
+              </label>
+
+              {/* 오른쪽: 삭제 버튼(연한 톤 + 줄바꿈 시 찌그러짐 방지) */}
+              <button
+                onClick={() => removeTask(task.id)}
+                className="shrink-0 border border-red-200 text-red-200 hover:bg-red-300 hover:text-white px-3 py-1.5 rounded-md transition"
+                aria-label="삭제"
+              >
+                Delete 😿
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <footer className="mt-8 text-center text-[11px] text-white/70">
+        <div className="mt-2">
+          Made by <span className="font-semibold text-gray-300">แฮอิน จ้า นะ ค่ะ</span> 😺
+        </div>
+      </footer>
+    </div>
+  </main>
+);
 }
