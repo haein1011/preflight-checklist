@@ -83,7 +83,7 @@ export default function Home() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type here na ka 🛫🛫🛫"
-          className="flex-1 px-4 h-11 rounded-xl bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-1 px-4 h-14 rounded-xl bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
         <button
           onClick={addTask}
