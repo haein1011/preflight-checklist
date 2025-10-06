@@ -74,7 +74,7 @@ export default function Home() {
   <main className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-900 text-white flex flex-col items-center py-10 px-4 pb-[calc(env(safe-area-inset-bottom)+24px)]">
     <div className="bg-white/10 backdrop-blur-md shadow-2xl rounded-3xl w-full max-w-md md:max-w-2xl p-6 md:p-8 border border-white/20 mx-auto">
       {/* eslint-disable-next-line react/no-unescaped-entities */}
-      <h1 className="text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-center truncate"> 🗹 Ploy's Checklist
+      <h1 className="text-2xl md:text-3xl font-bold mb-5 md:mb-6 text-center truncate"> ✅ Ploy's Checklist
       </h1>
 
       {/* 입력 + 추가 버튼: 모바일은 세로, md부터 가로 */}
