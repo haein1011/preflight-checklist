@@ -21,10 +21,11 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const { data, error } = await supabase
-        .from("tasks")
-        .select("*")
-        .eq("list_id", LIST_ID)
-        .order("id", { ascending: true });
+  .from("tasks")
+  .select("*")
+  .eq("list_id", LIST_ID)
+  .is("deleted_at", null)                    // ← 삭제 표시된 행 제외
+  .order("created_at", { ascending: true });
 
       if (error) setLastError("SELECT error: " + error.message);
       else setTasks(data || []);
@@ -65,11 +66,13 @@ export default function Home() {
 
   // 삭제
   const removeTask = async (id: string) => {
-    const { error } = await supabase.from("tasks").delete().eq("id", id);
-    if (error) return setLastError("DELETE error: " + error.message);
-    setTasks(tasks.filter((t) => t.id !== id));
-  };
-
+  const { error } = await supabase
+    .from("tasks")
+    .update({ deleted_at: new Date().toISOString() })
+    .eq("id", id);
+  if (error) return setLastError("DELETE error: " + error.message);
+  setTasks(tasks.filter((t) => t.id !== id)); // 화면에서도 즉시 제거
+};
   return (
   <main className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-900 text-white flex flex-col items-center py-10 px-4 pb-[calc(env(safe-area-inset-bottom)+24px)]">
     <div className="bg-white/10 backdrop-blur-md shadow-2xl rounded-3xl w-full max-w-md md:max-w-2xl p-6 md:p-8 border border-white/20 mx-auto">
