@@ -118,12 +118,12 @@ export default function Home() {
                   </span>
                 </label>
                 <button
-                  onClick={() => removeTask(task.id)}
-                  className="text-red-400 hover:text-red-600 transition"
-                  aria-label="삭제"
-                >
-                  Del😿
-                </button>
+  onClick={() => removeTask(task.id)}
+  className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1.5 rounded-lg shadow-md transition active:scale-95"
+  aria-label="삭제"
+>
+  Delete 😿
+</button>
               </li>
             ))}
           </ul>
