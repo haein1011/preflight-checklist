@@ -73,6 +73,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-900 text-white flex flex-col items-center py-12 px-4">
       <div className="bg-white/10 backdrop-blur-md shadow-2xl rounded-3xl w-full max-w-md p-8 border border-white/20">
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <h1 className="text-3xl font-bold mb-6 text-center">🗹 Ploy's Checklist</h1>
 
         <div className="flex gap-2 mb-6">
