@@ -121,7 +121,7 @@ export default function Home() {
                   className="text-red-400 hover:text-red-600 transition"
                   aria-label="삭제"
                 >
-                  ✕
+                  Del😿
                 </button>
               </li>
             ))}
