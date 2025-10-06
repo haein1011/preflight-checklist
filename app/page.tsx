@@ -80,11 +80,11 @@ export default function Home() {
       {/* 입력 + 추가 버튼: 모바일은 세로, md부터 가로 */}
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type here na ka 🛫🛫🛫"
-          className="flex-1 px-4 h-14 rounded-xl bg-white/90 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Type here na ka ✈️✈️✈️"
+  className="flex-1 px-5 py-4 rounded-2xl bg-white/95 text-gray-900 placeholder-gray-500 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+  />
         <button
           onClick={addTask}
           className="h-11 sm:w-28 rounded-xl bg-blue-500 hover:bg-blue-600 font-semibold shadow-lg transition active:scale-95"
