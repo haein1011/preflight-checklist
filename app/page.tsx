@@ -119,8 +119,7 @@ export default function Home() {
                 </label>
                 <button
   onClick={() => removeTask(task.id)}
-  className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1.5 rounded-lg shadow-md transition active:scale-95"
-  aria-label="삭제"
+  className="border border-red-200 text-red-200 hover:bg-red-300 hover:text-white px-3 py-1 rounded-md transition"
 >
   Delete 😿
 </button>
