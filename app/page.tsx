@@ -140,7 +140,7 @@ export default function Home() {
 
       <footer className="mt-8 text-center text-[11px] text-white/70">
         <div className="mt-2">
-          Made by <span className="font-semibold text-gray-300">แฮอิน จ้านะคะ</span> 😺
+          Made by <span className="font-semibold text-gray-300">แฮอินจ้านะคะ</span> 😺
         </div>
       </footer>
     </div>
